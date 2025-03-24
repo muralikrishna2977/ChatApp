@@ -1,0 +1,158 @@
+.topmenuforgroups{
+    position: absolute;
+    width: 500px;
+    height: 430px;
+    background-color: white;
+    border: solid 1px rgb(194, 192, 192);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    top:66px;
+    left: 1px;
+    z-index: 100;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+
+    .topmenuOptions{
+        height: 100%;
+        width: 170px;
+        border-right: solid 1px rgb(194, 192, 192);
+        padding-left: 15px;
+        padding-top: 15px;
+
+        .GroupOverview{
+           
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .addGroupmembers{
+            
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+    }
+
+    .topmenuExecution{
+        position: relative;
+        height: 100%;
+        width: 330px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .creategroupStatus{
+            color: rgb(40, 128, 40);
+        }
+
+        .OverViewDiv{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .groupmembersofgroup{
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+
+
+            .groupmemberofthisgroup{
+                width: 100%;
+                // height: 100%;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+        
+                img{
+                    margin-left: 10px;
+                }
+            }
+
+            &::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 5px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: rgb(186, 186, 186);
+                border-radius: 5px;
+            }
+
+            &::-webkit-scrollbar-thumb:hover {
+                background: gray;
+            }
+
+            .singlecontactPresent{
+                border-bottom: solid 0.5px rgb(189, 187, 187);
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                // justify-content: space-between;
+                gap: 5px;
+                padding-left: 47px;
+                padding-right: 10px;
+
+                cursor: pointer;
+                p{
+                    margin: 0;
+                    // margin-bottom: 5px;
+                }
+
+                .AlreadyPresent{
+                    // margin-top: 10px;
+                    margin-bottom: 10px;
+                }
+                .AlreadyPresentName{
+                    margin-top: 5px;
+                }
+
+                &:hover {
+                    background: #dff1fa;
+                }
+            }
+            .singlecontactforgroup {
+                display: flex;
+                align-items: center;
+                justify-content:flex-start;
+                border-bottom: solid 0.5px rgb(189, 187, 187);
+                gap: 10px;
+                padding-left: 10px;
+                cursor: pointer;
+
+                input{
+                    width: 20px;
+                    height: 20px;
+                }
+                &:hover {
+                    background: #dff1fa;
+                }
+            }
+        }
+
+        .addExtraMemberToGroup, .addSelectedNewMembers{
+            position: absolute;
+            z-index: 100;
+            top: 350px;
+            left: 250px;
+            background-color: #55C2F8;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0.1, 0.1, 0.1, 0.1);
+        }
+
+    }
+    
+}
