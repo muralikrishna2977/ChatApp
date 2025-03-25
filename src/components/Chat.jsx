@@ -1567,7 +1567,7 @@ function Chat() {
               className="chatarea" 
               ref={chatContainerRef}
               style={{ 
-                backgroundImage: `url('${import.meta.env.BASE_URL}assets/background_enhanced.png')`, 
+                backgroundImage: `url("${import.meta.env.BASE_URL}assets/background_enhanced.png")`, 
                 backgroundSize: "850px 600px", 
                 backgroundPosition: "center", 
                 backgroundRepeat: "no-repeat" 
