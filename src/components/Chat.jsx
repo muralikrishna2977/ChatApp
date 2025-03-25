@@ -1563,6 +1563,7 @@ function Chat() {
               </div>
             ))}
           {openinput && (
+      console.log("hello ",import.meta.env.BASE_URL),
             <div 
               className="chatarea" 
               ref={chatContainerRef}
