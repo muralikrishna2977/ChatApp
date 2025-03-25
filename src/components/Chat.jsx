@@ -1567,13 +1567,12 @@ function Chat() {
             <div 
               className="chatarea" 
               ref={chatContainerRef}
-              style={{
-                backgroundImage: `url("/ChatApp/assets/background_enhanced.png")`,
-                backgroundSize: "850px 600px", 
-                backgroundPosition: "center", 
-                backgroundRepeat: "no-repeat" 
-              }}
             >
+              <img
+                    src={`${import.meta.env.BASE_URL}assets/background_enhanced.png`}
+                    alt="Background"
+                    className="background_image_chatt"
+                  />
               {history.map((eachchat, index) =>
                 !isitGroup ? (
                   <EachChat
