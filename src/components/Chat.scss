@@ -245,11 +245,21 @@
 
 
                 .chatarea {
+                      position: relative;
                     flex: 1;
                     overflow-y: auto;
                     width: 100%;
                     padding: 10px;
 
+                    .background_image_chat {
+                              position: absolute;
+                              top: 0;
+                              left: 0;
+                              width: 100%;
+                              height: 100%;
+                              object-fit: cover; /* Adjust to 'contain' if needed */
+                              z-index: -1; /* Keeps it behind other content */
+                       }
                     // background: url('assets/background_enhanced.png') no-repeat center center;
                     // background-size: 850px 600px; //Set width and height 
                 }
