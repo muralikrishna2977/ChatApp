@@ -1,0 +1,53 @@
+.reviewImage{
+    position: absolute;
+    bottom: 105%;
+    left: 1px;
+    background-color: white;
+    border-radius: 8px;
+    border: solid 1px rgb(194, 192, 192);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 60%;
+
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2),  
+            0px -4px 8px rgba(0, 0, 0, 0.1),  
+            4px 0px 8px rgba(0, 0, 0, 0.1),  
+            -4px 0px 8px rgba(0, 0, 0, 0.1);
+
+    .closeReview{
+        width: 100%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #dff1fa;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+
+        img{
+            margin-right: 20px;
+            cursor: pointer;
+        }
+    }
+
+    .captionSend{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+        justify-content: space-between;
+        background-color: #dff1fa;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+
+        textarea{
+            max-width: 90%;
+            margin-left: 2px;
+        }
+        img{
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    }
+}
