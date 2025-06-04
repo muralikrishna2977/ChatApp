@@ -1,0 +1,32 @@
+.fileTypes{
+    position: absolute;
+    bottom: 105%;
+    left: 10px;
+    display: flex;
+    z-index: 150;
+    flex-direction: column;
+    gap:10px;
+    padding: 10px;
+    // background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: solid 1.5px rgb(194, 192, 192);
+    background-color: #dff1fa;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2),  
+0px -4px 8px rgba(0, 0, 0, 0.1),  
+4px 0px 8px rgba(0, 0, 0, 0.1),  
+-4px 0px 8px rgba(0, 0, 0, 0.1);
+
+    p{
+        margin: 0;
+    }
+    .fileTypeButton{
+        display: flex;
+        cursor: pointer;
+
+        // background-color: #3a5f91;
+        width: 100%;
+        align-items: center;
+        justify-content:flex-start;
+        gap:5px;
+    }
+}

@@ -1,0 +1,288 @@
+.leftsidemenu{
+
+    position: absolute;
+    left: 65px;
+    width: 550px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: solid 1px rgb(194, 192, 192);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .leftsidemenuoptions{
+        height: 100vh;
+        width: 180px;
+        border-right: solid 1px rgb(194, 192, 192);
+        display: flex;
+        flex-direction: column;
+        gap:30px;
+        align-items:center;
+        justify-content:space-between;
+        padding-top: 100px;
+        // padding-left: 30px;
+        padding-bottom: 100px;
+
+        .mo_except_logout{
+            display: flex;
+            // align-items: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .menuoption{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0px 5px;
+            width: 130px;
+            height: 40px;
+            border-radius: 5px;
+            border: solid 1px rgb(181, 181, 181);
+            cursor: pointer;
+            p{
+                margin: 0;
+            }
+        }
+        .hoverMenuOption{
+            background-color: #61c3f4;
+        }
+        .menuoption:hover{
+            background-color: #3faae0;
+        }
+        
+    }
+    .leftsidemenuexecution{
+        position: relative;
+        height: 100vh;
+        width: 370px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+
+
+
+        .addfriendanderror{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            img{
+                margin-bottom: 20px;
+            }
+
+            .error_user{
+                height: 40px;
+                .addFriendError{
+                    color: red;
+                }
+                .addFriendSuccess{
+                    color: rgb(40, 128, 40);
+                }
+            }
+
+            .addfriend{
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                width: 100%;
+
+                input {
+                    padding: 8px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+                input:focus {
+                    border: solid 1px black;
+                    outline: none;
+                }
+
+                button {
+                    padding: 8px 10px;
+                    background: #4a76a8;
+                    color: #fff;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background: #3a5f91;
+                    }
+                }
+            }
+        }
+
+        .openProfileclass{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .profilePicture{
+                // margin-right: 100px;
+                margin-bottom: 50px;
+            }
+
+            .emailname{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .editname{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 15px;
+                    height: 60px;
+                    width: 100%;
+                    input{
+                        padding: 8px;
+                    border: 1px solid #acacac;
+                    border-radius: 5px;
+                    width: 220px;
+                    }
+                    input:focus {
+                        border: solid 1px black;
+                        outline: none;
+                    }
+
+                    .pensilEdit{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 5px;
+                        padding: 10px;
+                    }
+                    .pensilEdit:hover{
+                        background-color: #61c3f4;
+                    }
+                }
+            }
+
+            h3{
+                text-align: center;
+            }
+        }
+
+        .contactsforgroup{
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+
+            .singlecontactforgroup {
+                display: flex;
+                align-items: center;
+                justify-content:flex-start;
+                border-bottom: solid 0.5px rgb(189, 187, 187);
+                gap: 10px;
+                padding-left: 10px;
+                cursor: pointer;
+
+                input{
+                    width: 20px;
+                    height: 20px;
+                }
+                &:hover {
+                    background: #dff1fa;
+                }
+            }
+
+            .addforgroup{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                left: 75%;
+                top: 87%;
+                width: 50px;
+                height: 50px;
+                border-radius: 8px;
+                background-color: #55C2F8;
+                box-shadow: 0px 4px 10px rgba(0.1, 0.1, 0.1, 0.1);
+                img{
+                    color: white;
+                }
+            }
+
+        }
+
+        .contactsforgroup::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .contactsforgroup::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 5px;
+        }
+
+        .contactsforgroup::-webkit-scrollbar-thumb {
+            background: rgb(186, 186, 186);
+            border-radius: 5px;
+        }
+
+        .contactsforgroup::-webkit-scrollbar-thumb:hover {
+            background: gray;
+        }
+
+
+
+        .entergroupname{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .creategroup{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+                
+                input{
+                    padding: 8px;
+                    border: 1px solid #acacac;
+                    border-radius: 5px;
+                    width: 220px;
+                }
+                input:focus {
+                    border: solid 1px black;
+                    outline: none;
+                }
+
+                button{
+                    padding: 8px 10px;
+                    background: #4a76a8;
+                    color: #fff;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background: #3a5f91;
+                    }
+                }
+
+                
+            }
+
+            .createGroupStatus{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 55px;
+                p{
+                    color: rgb(40, 128, 40);
+                }
+            }
+        }
+
+    }
+}
+

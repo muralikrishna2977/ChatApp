@@ -1,0 +1,394 @@
+.eachmessage{
+    .sent-message{
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
+        margin-bottom: 5px;
+
+        .files_sent{
+          display: flex;
+          flex-direction: column;
+          align-items:flex-start;
+          max-width: 60%;
+
+          .image_time_image{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .captionTime_image{
+              padding: 10px;
+              display: flex;
+              flex-direction: column;
+              background-color: #72d0ff;
+              gap: 10px;
+              border-bottom-right-radius: 10px;
+              border-bottom-left-radius: 10px;
+              max-width: 400px; /* Same as the max-width of the image */
+              width: 100%; /* Ensures it follows the image width */
+              
+              .chat_caption_image{
+                margin: 0;
+                word-wrap: break-word; 
+                overflow-wrap: break-word;
+                white-space: normal;  /* Change from pre-wrap to normal */
+                max-width: 100%;
+                display: inline-block; /* Ensures max-width is respected */
+                word-break: break-word; /* Ensures even long words break */
+              }
+              .caption_time_image{
+                margin: 0;
+                font-size: 12px;
+                opacity: 0.8;
+              }
+            }
+
+          }
+
+
+          .image_time_video{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .captionTime_video{
+              padding: 10px;
+              display: flex;
+              flex-direction: column;
+              background-color: #72d0ff;
+
+              gap: 10px;
+              border-bottom-right-radius: 10px;
+              border-bottom-left-radius: 10px;
+              max-width: 400px; /* Same as the max-width of the image */
+              width: 100%; /* Ensures it follows the image width */
+              
+              .chat_caption_video{
+                margin: 0;
+                word-wrap: break-word; 
+                overflow-wrap: break-word;
+                white-space: normal;  /* Change from pre-wrap to normal */
+                max-width: 100%;
+                display: inline-block; /* Ensures max-width is respected */
+                word-break: break-word; /* Ensures even long words break */
+              }
+              .caption_time_video{
+                margin: 0;
+                font-size: 12px;
+                opacity: 0.8;
+              }
+            }
+
+          }
+
+          .image_time_file{
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            background-color: #55C2F8;
+            border-radius: 5px;
+
+            .pdfAndOpen{
+              width: 100%;
+              width: 1;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              .pdfSymbolName{
+                width: 100%;
+                background-color: #a4defb;
+                padding: 10px;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                color: rgb(66, 66, 66);
+                font-weight: bold;
+                font-size: 14px;
+                border: solid 1px white;
+                border-bottom: 0;
+                img{
+                  margin-right: 10px;
+                }
+              }
+
+              .openButtondiv{
+                border: solid 1px white;
+                border-bottom: 0;
+                width: 100%;
+                  display: flex;
+                  justify-content: space-between;
+                  padding: 10px;
+                  background-color: #a4defb;
+                  a{
+                      padding: 8px 20px;
+                      background-color: white;
+                      color: #333;
+                      border: 1px solid #B3E0F2;
+                      border-radius: 5px;
+                      text-decoration: none;
+                      font-weight: bold;
+                      font-size: 12px;
+                  }
+              }
+            }
+
+            .captionTime_fi{
+              border: solid 1px white;
+              padding: 10px;
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              background-color: #a4defb;
+              gap: 10px;
+              border-bottom-right-radius: 10px;
+              border-bottom-left-radius: 10px;
+              
+              .chat_caption_fi{
+                margin: 0;
+                word-wrap: break-word; 
+                overflow-wrap: break-word;
+                white-space: normal;  /* Change from pre-wrap to normal */
+                max-width: 100%;
+                display: inline-block; /* Ensures max-width is respected */
+                word-break: break-word; /* Ensures even long words break */
+              }
+              .caption_time_fi{
+                margin: 0;
+                font-size: 12px;
+                opacity: 0.8;
+              }
+            }
+            
+          }
+
+          .message_time_sr{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            width: 100%;
+
+            p{
+              margin: 0;
+            }
+            background-color: #72d0ff;
+
+            .message_sr{
+              word-wrap: break-word; 
+              overflow-wrap: break-word;
+              white-space: normal;  /* Change from pre-wrap to normal */
+              max-width: 100%;
+              display: inline-block; /* Ensures max-width is respected */
+              word-break: break-word; /* Ensures even long words break */
+            }
+
+            .time_sr{
+              margin: 0;
+              font-size: 12px;
+              opacity: 0.8;
+            }
+          }
+          
+        }
+        
+    }
+
+    .received-message{
+      display: flex;
+        align-items: center;
+        justify-content:space-between;
+        margin-bottom: 5px;
+
+        .files_recive{
+          display: flex;
+          flex-direction: column;
+          align-items:flex-start;
+          max-width: 60%;
+
+
+
+          .image_time_image{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .captionTime_image{
+              padding: 10px;
+              display: flex;
+              flex-direction: column;
+              background-color: #c7ecff;
+              gap: 10px;
+              border-bottom-right-radius: 10px;
+              border-bottom-left-radius: 10px;
+              max-width: 400px; /* Same as the max-width of the image */
+              width: 100%; /* Ensures it follows the image width */
+              
+              .chat_caption_image{
+                margin: 0;
+                word-wrap: break-word; 
+                overflow-wrap: break-word;
+                white-space: normal;  /* Change from pre-wrap to normal */
+                max-width: 100%;
+                display: inline-block; /* Ensures max-width is respected */
+                word-break: break-word; /* Ensures even long words break */
+              }
+              .caption_time_image{
+                margin: 0;
+                font-size: 12px;
+                opacity: 0.8;
+              }
+            }
+
+          }
+
+
+          .image_time_video{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .captionTime_video{
+              padding: 10px;
+              display: flex;
+              flex-direction: column;
+              background-color: #c7ecff;
+              // background-color: #55C2F8;
+
+              gap: 10px;
+              border-bottom-right-radius: 10px;
+              border-bottom-left-radius: 10px;
+              max-width: 400px; /* Same as the max-width of the image */
+              width: 100%; /* Ensures it follows the image width */
+              
+              .chat_caption_video{
+                margin: 0;
+                word-wrap: break-word; 
+                overflow-wrap: break-word;
+                white-space: normal;  /* Change from pre-wrap to normal */
+                max-width: 100%;
+                display: inline-block; /* Ensures max-width is respected */
+                word-break: break-word; /* Ensures even long words break */
+              }
+              .caption_time_video{
+                margin: 0;
+                font-size: 12px;
+                opacity: 0.8;
+              }
+            }
+
+          }
+
+          .image_time_file{
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            background-color: #55C2F8;
+            border-radius: 5px;
+
+            .pdfAndOpen{
+              width: 100%;
+              width: 1;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              .pdfSymbolName{
+                width: 100%;
+                background-color: #a4defb;
+                padding: 10px;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                color: rgb(66, 66, 66);
+                font-weight: bold;
+                font-size: 14px;
+                border: solid 1px white;
+                border-bottom: 0;
+                img{
+                  margin-right: 10px;
+                }
+              }
+
+              .openButtondiv{
+                border: solid 1px white;
+                border-bottom: 0;
+                width: 100%;
+                  display: flex;
+                  justify-content: space-between;
+                  padding: 10px;
+                  background-color: #a4defb;
+                  a{
+                      padding: 8px 20px;
+                      background-color: white;
+                      color: #333;
+                      border: 1px solid #B3E0F2;
+                      border-radius: 5px;
+                      text-decoration: none;
+                      font-weight: bold;
+                      font-size: 12px;
+                  }
+              }
+            }
+
+            .captionTime_fi{
+              border: solid 1px white;
+              padding: 10px;
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              background-color: #a4defb;
+              gap: 10px;
+              border-bottom-right-radius: 10px;
+              border-bottom-left-radius: 10px;
+              
+              .chat_caption_fi{
+                margin: 0;
+                word-wrap: break-word; 
+                overflow-wrap: break-word;
+                white-space: normal;  /* Change from pre-wrap to normal */
+                max-width: 100%;
+                display: inline-block; /* Ensures max-width is respected */
+                word-break: break-word; /* Ensures even long words break */
+              }
+              .caption_time_fi{
+                margin: 0;
+                font-size: 12px;
+                opacity: 0.8;
+              }
+            }
+            
+          }
+
+          .message_time_sr{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            width: 100%;
+
+            p{
+              margin: 0;
+            }
+            background-color: #c7ecff;
+
+            .message_sr{
+              word-wrap: break-word; 
+              overflow-wrap: break-word;
+              white-space: normal;  /* Change from pre-wrap to normal */
+              max-width: 100%;
+              display: inline-block; /* Ensures max-width is respected */
+              word-break: break-word; /* Ensures even long words break */
+            }
+
+            .time_sr{
+              margin: 0;
+              font-size: 12px;
+              opacity: 0.8;
+            }
+          }
+        }
+    }
+}
