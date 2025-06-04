@@ -120,7 +120,7 @@ const LeftMenu = forwardRef(
       <motion.div
         ref={popupRef_s}
         initial={{ x: "-100%" }} // Start completely off-screen (left)
-        animate={{ x: 9 }} // Slide in to position
+        animate={{ x: 2 }} // Slide in to position
         exit={{ x: "-100%" }} // Slide out when hidden
         transition={{ type: "tween", duration: 0.2 }} // Smooth transition
         className="leftsidemenu fixed left-0 top-0 h-full w-64 bg-white shadow-lg p-4"
