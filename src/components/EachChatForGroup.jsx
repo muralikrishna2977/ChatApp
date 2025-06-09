@@ -157,7 +157,7 @@ function EachChatForGroup({ message, user_id, sender_id, name, time, fileUrl, fi
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
-                    border: "solid 5px #55C2F8",
+                    border: "solid 5px #c7ecff",
                     cursor: "pointer",
                   }}
                   src={fileUrl} 
@@ -184,7 +184,7 @@ function EachChatForGroup({ message, user_id, sender_id, name, time, fileUrl, fi
                     maxHeight: "300px",
                     width: "100%",
                     height: "100%",
-                    border: "solid 5px #55C2F8",
+                    border: "solid 5px #c7ecff",
                     cursor: "pointer",
                   }}
                 >
