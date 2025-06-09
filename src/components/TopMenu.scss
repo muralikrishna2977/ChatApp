@@ -19,21 +19,27 @@
         padding-left: 15px;
         padding-top: 15px;
 
-        .GroupOverview{
-           
+        .GroupOverview, .addGroupmembers{
+
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 5px;
+            padding: 0px 5px;
+            width: 130px;
+            height: 40px;
+            border-radius: 5px;
+            border: solid 1px rgb(181, 181, 181);
             cursor: pointer;
+            margin-bottom: 20px;
+            p{
+                margin: 0;
+            }
         }
 
-        .addGroupmembers{
-            
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
+         .GroupOverview:hover, .addGroupmembers:hover{
+            background-color: #3faae0;
         }
+
     }
 
     .topmenuExecution{
@@ -153,6 +159,19 @@
             box-shadow: 0px 4px 10px rgba(0.1, 0.1, 0.1, 0.1);
         }
 
+        .addExtraMemberToGroup:hover, .addSelectedNewMembers:hover{
+            background-color: #3faae0;
+            cursor: pointer;
+        }
+
     }
     
 }
+
+.hoverMenuOption{
+    background-color: #61c3f4;
+}
+
+
+
+

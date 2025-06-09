@@ -6,20 +6,20 @@ import { motion } from "framer-motion";
 import { API_URL } from "../App.jsx";
 
 const TopMenu = forwardRef(({ contacts, clickedGroupName, clickedGroupid }, popupRef) => {
-  const [openOverview, setOpenOverview] = useState(false);
-  const [openMembers, setOpenMembers] = useState(false);
-  const [openAddNewMember, setOpenAddNewMember] = useState(false);
+
+  const [openOption, setOpenOption]=useState("");
   const [createdAt, setCreatedAt] = useState("");
   const [groupMembers, setGroupMembers] = useState([]);
   const [checkedItems, setCheckedItems] = useState([]);
   const [ids, setIds] = useState(new Set());
   const [creategroupStatus, setCreategroupStatus] = useState("");
 
+  const [clickedButton, setClickedButton]=useState("");
+
   async function handleMembersClick() {
     try { 
-      setOpenMembers(true);
-      setOpenOverview(false);
-      setOpenAddNewMember(false);
+      setOpenOption("members");
+      setClickedButton("members");
       const response = await axios.post(`${API_URL}/getgroupmembers`, { clickedGroupid });
       setGroupMembers(response.data.groupMembers); 
       setIds(new Set(response.data.groupMembers.map(member => member.friend_id)));
@@ -45,25 +45,21 @@ const TopMenu = forwardRef(({ contacts, clickedGroupName, clickedGroupid }, popu
 
   async function handleOverviewClick() {
     try {
-      setOpenMembers(false);
-      setOpenAddNewMember(false);
+      setOpenOption("overview");
+      setClickedButton("overview");
       const response = await axios.post(`${API_URL}/fetchGroupInfo`, { clickedGroupid });
-      console.log("gr id ", clickedGroupid);
       setCreatedAt(convertMicroEpochToIST(response.data.groupinfo.created_at));
-      setOpenOverview(true);
     } catch (err) {
       console.log(err);
     }
   }
 
   function handleAddNewMember() {
-    setOpenAddNewMember(true);
-    setOpenOverview(false);
-    setOpenMembers(false);
+    setOpenOption("addnewmember");
   }
 
   async function handleAddCheckedMembers() {
-    setOpenAddNewMember(false);
+    setOpenOption("");
     if (checkedItems.length === 0) {
       return;
     }
@@ -92,24 +88,24 @@ const TopMenu = forwardRef(({ contacts, clickedGroupName, clickedGroupid }, popu
       className="topmenuforgroups leftsidemenu fixed left-0 top-0 h-full w-64 bg-white shadow-lg p-4"
     >
       <div className="topmenuOptions">
-        <div className="GroupOverview" onClick={handleOverviewClick}>
+        <div className={clickedButton==="overview"?"GroupOverview hoverMenuOption":"GroupOverview"} onClick={handleOverviewClick}>
           <img src={`${import.meta.env.BASE_URL}assets/iOverview.svg`} width="25px" height="25px" alt="Overview" />
-          <p>Overview</p>
+          <p>Overview</p> 
         </div>
-        <div className="addGroupmembers" onClick={handleMembersClick}>
+        <div className={clickedButton==="members"?"addGroupmembers hoverMenuOption":"addGroupmembers"} onClick={handleMembersClick}>
           <img src={`${import.meta.env.BASE_URL}assets/add_friends.png`} width="25px" height="25px" alt="Members" />
           <p>Members</p>
         </div>
       </div>
       <div className="topmenuExecution">
-        {openOverview && (
+        {openOption==="overview" && (
           <div className="OverViewDiv">
             <img src={`${import.meta.env.BASE_URL}assets/profile.svg`} width="70px" height="70px" alt="Group" />
             <p>{clickedGroupName}</p>
             <p>{`Created at: ${createdAt}`}</p>
           </div>
         )}
-        {openMembers && (
+        {openOption==="members" && (
           <div className="groupmembersofgroup">
             {groupMembers.map((member) => (
               <div className="groupmemberofthisgroup" key={member.friend_id}>
@@ -119,12 +115,12 @@ const TopMenu = forwardRef(({ contacts, clickedGroupName, clickedGroupid }, popu
             ))}
           </div>
         )}
-        {openMembers && (
+        {openOption==="members" && (
           <div className="addExtraMemberToGroup" onClick={handleAddNewMember}>
             <img src={`${import.meta.env.BASE_URL}assets/plusSvg.svg`} width="45px" height="45px" alt="Add Member" />
           </div>
         )}
-        {openAddNewMember && (
+        {openOption==="addnewmember" && (
           <div className="groupmembersofgroup">
             {contacts.map((contact) =>
               ids.has(contact.friend_id) ? (
@@ -145,7 +141,7 @@ const TopMenu = forwardRef(({ contacts, clickedGroupName, clickedGroupid }, popu
             )}
           </div>
         )}
-        {openAddNewMember && (
+        {openOption==="addnewmember" && (
           <div className="addSelectedNewMembers" onClick={handleAddCheckedMembers}>
             <img src={`${import.meta.env.BASE_URL}assets/right-arrow.svg`} width="30px" height="40px" alt="Submit" />
           </div>
