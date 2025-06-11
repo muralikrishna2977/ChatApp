@@ -14,7 +14,7 @@ import axios from "axios";
 import io from "socket.io-client";
 import "./Chat.scss";
 import { AnimatePresence } from "framer-motion";
-
+import { BounceLoader } from 'react-spinners';
 import { API_URL } from "../App.jsx";
 
 function Chat() {
@@ -24,6 +24,7 @@ function Chat() {
   const email = userData.email;
   const sendername = userData.name;
 
+  const [loading, setLoading] = useState(false);
   const [contacts, setContacts] = useState([]);
   const [sendmessage, setSendmessage] = useState("");
   const [error, setError] = useState("");
@@ -119,6 +120,7 @@ function Chat() {
     async function loadmessagesforChatInitial() {
       if (!reciverid) return;
       try {
+        setLoading(true);
         const response = await axios.post(`${API_URL}/gethistoryinitial`, {
           senderid,
           reciverid,
@@ -127,6 +129,7 @@ function Chat() {
         lastTimeStamp.current = response.data.history[len - 1].time;
         lastMessageLengthRef.current = response.data.history.length;
         setHistory(response.data.history.reverse());
+        setLoading(false);
         setError("");
       } catch (err) {
         setError(err.response?.data?.message || "An error occurred");
@@ -144,7 +147,7 @@ function Chat() {
       const chatContainer = chatContainerRef.current;
       previousScrollHeight.current = chatContainer.scrollHeight;
       previousScrollTop.current = chatContainer.scrollTop;
-
+      setLoading(true);
       const response = await axios.post(`${API_URL}/gethistory`, {
         senderid,
         reciverid,
@@ -159,6 +162,7 @@ function Chat() {
         ...response.data.history.reverse(),
         ...prevHistory,
       ]);
+      setLoading(false);
       setError("");
     } catch (err) {
       setError(err.response?.data?.message || "An error occurred");
@@ -182,6 +186,7 @@ function Chat() {
     
     async function loadmessagesforGroupInitial() {
       try {
+        setLoading(true);
         const groupid = clickedGroupid;
         const response = await axios.post(`${API_URL}/createroomforgroupandfetchhistory`, {
           groupid,
@@ -192,6 +197,7 @@ function Chat() {
         lastTimeforgroup.current = response.data.history[len - 1].sent_time;
         lastMessageLengthRef.current = response.data.history.length;
         setHistory(response.data.history.reverse());
+        setLoading(false);
         setError("");
       } catch (err) {
         setError(err.response?.data?.message || "An error occurred");
@@ -208,7 +214,7 @@ function Chat() {
       const chatContainer = chatContainerRef.current;
       previousScrollHeight.current = chatContainer.scrollHeight;
       previousScrollTop.current = chatContainer.scrollTop;
-
+      setLoading(true);
       const response = await axios.post(`${API_URL}/fetchhistoryforgroup`, {
         groupid,
         time: lastTimeforgroup.current,
@@ -222,6 +228,7 @@ function Chat() {
         ...response.data.history.reverse(),
         ...prevHistory,
       ]);
+      setLoading(false);
       setError("");
     } catch (err) {
       setError(err.response?.data?.message || "An error occurred");
@@ -554,6 +561,19 @@ function Chat() {
                 <p className="onlineofline">
                   {onlineOfflineStatus[reciverid] || "offline"}
                 </p>
+
+                {loading && (
+                  <div style={{
+                    position: 'absolute',
+                    top: '160%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    zIndex: 10,
+                  }}>
+                    <BounceLoader color="#6FA5DB" />
+                  </div>
+                )}
+
               </div>
             ) : (
               <div className="statusonof">
@@ -565,6 +585,19 @@ function Chat() {
                   {clickedGroupName}
                 </p>
                 <div></div>
+
+                {loading && (
+                  <div style={{
+                    position: 'absolute',
+                    top: '160%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    zIndex: 10,
+                  }}>
+                    <BounceLoader color="#6FA5DB" />
+                  </div>
+                )}
+
               </div>
             ))}
 
