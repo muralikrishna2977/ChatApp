@@ -126,14 +126,19 @@ function Chat() {
           reciverid,
         });
         const len = response.data.history.length;
-        lastTimeStamp.current = response.data.history[len - 1].time;
-        lastMessageLengthRef.current = response.data.history.length;
-        setHistory(response.data.history.reverse());
-        setLoading(false);
+        if(len>0){
+          lastTimeStamp.current = response.data.history[len - 1].time;
+          lastMessageLengthRef.current = response.data.history.length;
+          setHistory(response.data.history.reverse());
+        }
+        // setLoading(false);
         setError("");
       } catch (err) {
         setError(err.response?.data?.message || "An error occurred");
+      } finally {
+        setLoading(false);
       }
+
     }
     loadmessagesforChatInitial();
   }, [reciverid]);
@@ -155,17 +160,21 @@ function Chat() {
       });
 
       const len = response.data.history.length;
-      lastTimeStamp.current = response.data.history[len - 1].time;
-      lastMessageLengthRef.current = response.data.history.length;
+      if(len>0){
+        lastTimeStamp.current = response.data.history[len - 1].time;
+        lastMessageLengthRef.current = response.data.history.length;
+        setHistory((prevHistory) => [
+          ...response.data.history.reverse(),
+          ...prevHistory,
+        ]);
+      }
 
-      setHistory((prevHistory) => [
-        ...response.data.history.reverse(),
-        ...prevHistory,
-      ]);
-      setLoading(false);
+      // setLoading(false);
       setError("");
     } catch (err) {
       setError(err.response?.data?.message || "An error occurred");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -194,13 +203,18 @@ function Chat() {
         });
   
         const len = response.data.history.length;
-        lastTimeforgroup.current = response.data.history[len - 1].sent_time;
-        lastMessageLengthRef.current = response.data.history.length;
-        setHistory(response.data.history.reverse());
-        setLoading(false);
+        if(len>0){
+          lastTimeforgroup.current = response.data.history[len - 1].sent_time;
+          lastMessageLengthRef.current = response.data.history.length;
+          setHistory(response.data.history.reverse());
+        }
+
+        // setLoading(false);
         setError("");
       } catch (err) {
         setError(err.response?.data?.message || "An error occurred");
+      } finally{
+        setLoading(false);
       }
     }
 
@@ -221,17 +235,21 @@ function Chat() {
       });
 
       const len = response.data.history.length;
-      lastTimeforgroup.current = response.data.history[len - 1].sent_time;
-      lastMessageLengthRef.current = response.data.history.length;
 
-      setHistory((prevHistory) => [
-        ...response.data.history.reverse(),
-        ...prevHistory,
-      ]);
-      setLoading(false);
+      if(len>0){
+        lastTimeforgroup.current = response.data.history[len - 1].sent_time;
+        lastMessageLengthRef.current = response.data.history.length;
+        setHistory((prevHistory) => [
+          ...response.data.history.reverse(),
+          ...prevHistory,
+        ]);
+      }
+      // setLoading(false);
       setError("");
     } catch (err) {
       setError(err.response?.data?.message || "An error occurred");
+    } finally{
+      setLoading(false);
     }
   }
 
