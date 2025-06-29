@@ -254,25 +254,34 @@ function Chat() {
   }
 
   const handleContactClick = useCallback((id, name) => {
-    initialScrollIndicator.current = 1;
-    setHistory([]);
-    setCurrentchat([]);
-    setIsitGroup(false);
-    setOpeninput(true);
-    setFriendname(name);
-    setReciverid(id);
-    setClickedGroupid("");
-  }, []);
+    if(reciverid===id){
+      return;
+    } else{
+      initialScrollIndicator.current = 1;
+      setHistory([]);
+      setCurrentchat([]);
+      setIsitGroup(false);
+      setOpeninput(true);
+      setFriendname(name);
+      setReciverid(id);
+      setClickedGroupid("");
+    }
+   
+  }, [reciverid]);
 
-  const handleSingleGroupClick9 = useCallback((groupid) => {
+  const handleSingleGroupClick9 = useCallback((groupid, groupname) => {
+    if(clickedGroupid===groupid){
+      return;
+    }
     initialScrollIndicator.current = 1;
     setClickedGroupid(groupid);
+    setClickedGroupName(groupname);
     setIsitGroup(true);
     setReciverid("");
     setCurrentchat([]);
     setHistory([]);
     setOpeninput(true);
-  }, []);
+  }, [clickedGroupid]);
 
   useEffect(() => {
     if (!chatContainerRef.current) return;
@@ -556,7 +565,6 @@ function Chat() {
           handleContactClick={handleContactClick} 
           groups={groups} 
           handleSingleGroupClick9={handleSingleGroupClick9} 
-          setClickedGroupName={setClickedGroupName} 
           clickedGroupid={clickedGroupid}
         />
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Contacts.scss";
 
-const Contacts = React.memo(function Contacts({conOrGro, cga, contacts, reciverid, handleContactClick, groups, handleSingleGroupClick9, setClickedGroupName, clickedGroupid}) {
+const Contacts = React.memo(function Contacts({conOrGro, cga, contacts, reciverid, handleContactClick, groups, handleSingleGroupClick9, clickedGroupid}) {
     return (
 
         <div className="contactsaddprofilename">
@@ -39,8 +39,7 @@ const Contacts = React.memo(function Contacts({conOrGro, cga, contacts, reciveri
                   }`}
                   key={group.groupid}
                   onClick={() => {
-                    handleSingleGroupClick9(group.groupid);
-                    setClickedGroupName(group.name);
+                    handleSingleGroupClick9(group.groupid, group.name);
                   }}
                 >
                   <img
