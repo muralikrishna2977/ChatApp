@@ -6,8 +6,8 @@ import "./SignIn.scss";
 import { API_URL } from "../App.jsx";
 
 function SignIn() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("ram166@gmail.com");
+  const [password, setPassword] = useState("123");
   const [error, setError] = useState(null);
   const [isSigningIn, setIsSigningIn] = useState(false);
   const navigate = useNavigate();
@@ -17,11 +17,9 @@ function SignIn() {
     setIsSigningIn(true); 
 
     try {
-      // Make a POST request to your Railway backend
       const response = await axios.post(`${API_URL}/signin`, { email, password });
       
       if (response.data.message === "Login successful") {
-        // Save user data in state and navigate to the chat page
         const userData = {
           user_id: response.data.userid,
           name: response.data.name,
