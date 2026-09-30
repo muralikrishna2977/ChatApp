@@ -1,24 +1,27 @@
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
+import { endSession } from "../api/index.js";
 import { API_URL } from "../config.js";
 
-// Opens one socket per signed-in user and (re-)registers it on every connect,
-// so the server can route messages to us again after a reconnect.
-export function useSocket(userId) {
+// Opens one authenticated socket per session. The server identifies (and registers)
+// us from the token on every connect, including reconnects.
+export function useSocket(token) {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    if (!userId) return;
-    const connection = io(API_URL, { transports: ["websocket"] });
-    const register = () => connection.emit("register_user", userId);
-    connection.on("connect", register);
+    if (!token) return;
+    const connection = io(API_URL, { transports: ["websocket"], auth: { token } });
+    const onConnectError = (err) => {
+      if (err.message === "unauthorized") endSession();
+    };
+    connection.on("connect_error", onConnectError);
     setSocket(connection);
 
     return () => {
-      connection.off("connect", register);
+      connection.off("connect_error", onConnectError);
       connection.disconnect();
     };
-  }, [userId]);
+  }, [token]);
 
   return socket;
 }

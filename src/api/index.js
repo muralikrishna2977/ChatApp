@@ -1,7 +1,29 @@
 import axios from "axios";
 import { API_URL } from "../config.js";
+import { clearUser, getToken } from "../lib/session.js";
 
 const http = axios.create({ baseURL: API_URL });
+
+// The server identifies the caller from this token, never from ids in the body.
+http.interceptors.request.use((config) => {
+  const token = getToken();
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
+
+// Expired or invalid session: sign out and return to the sign-in screen.
+export function endSession() {
+  clearUser();
+  window.location.hash = "#/";
+}
+
+http.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) endSession();
+    return Promise.reject(error);
+  }
+);
 
 const post = (url, body) => http.post(url, body).then((res) => res.data);
 
@@ -15,20 +37,20 @@ export const authApi = {
 };
 
 export const userApi = {
-  getName: (senderid) => post("/getname", { senderid }),
-  rename: (senderid, name) => post("/editsendername", { senderid, name }),
+  getName: () => post("/getname"),
+  rename: (name) => post("/editsendername", { name }),
   findByEmail: (member) => post("/findifexist", { member }),
 };
 
 export const contactApi = {
-  list: (senderid) => post("/contacts", { senderid }),
-  add: (senderid, friendId, friendName) =>
-    post("/addfriend", { senderid, fri_id: friendId, fri_name: friendName }),
+  list: () => post("/contacts"),
+  add: (friendId, friendName) => post("/addfriend", { fri_id: friendId, fri_name: friendName }),
 };
 
 export const groupApi = {
-  list: (senderid) => post("/getgroups", { senderid }),
-  create: (groupname, senderid, time) => post("/creategroup", { groupname, senderid, time }),
+  list: () => post("/getgroups"),
+  // The server adds the creator as the first member.
+  create: (groupname, time) => post("/creategroup", { groupname, time }),
   addMembers: (groupid, memberIds, time) =>
     post("/addmemberstogroup", { groupid, checkedItems: memberIds, timeAddmambers: time }),
   members: (groupid) => post("/getgroupmembers", { clickedGroupid: groupid }),
@@ -37,12 +59,11 @@ export const groupApi = {
 };
 
 export const messageApi = {
-  directInitial: (senderid, reciverid) => post("/gethistoryinitial", { senderid, reciverid }),
-  directBefore: (senderid, reciverid, time) => post("/gethistory", { senderid, reciverid, time }),
+  directInitial: (reciverid) => post("/gethistoryinitial", { reciverid }),
+  directBefore: (reciverid, time) => post("/gethistory", { reciverid, time }),
   sendDirect: (payload) => post("/sendmessageinchat", payload),
-  // Also joins the caller's socket to the group room on the server.
-  groupInitial: (groupid, senderid) =>
-    post("/createroomforgroupandfetchhistory", { groupid, senderid }),
+  // Also joins our socket to the group room on the server.
+  groupInitial: (groupid) => post("/createroomforgroupandfetchhistory", { groupid }),
   groupBefore: (groupid, time) => post("/fetchhistoryforgroup", { groupid, time }),
 };
 

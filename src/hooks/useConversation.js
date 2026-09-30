@@ -16,7 +16,7 @@ async function fetchPage({ type, id }, selfId, before) {
   if (type === "group") {
     const { history = [] } = before
       ? await messageApi.groupBefore(id, before)
-      : await messageApi.groupInitial(id, selfId);
+      : await messageApi.groupInitial(id);
     return {
       items: history.map((m) => fromGroupHistory(m, selfId)).reverse(),
       cursor: history[history.length - 1]?.sent_time ?? null,
@@ -25,8 +25,8 @@ async function fetchPage({ type, id }, selfId, before) {
   }
 
   const { history = [] } = before
-    ? await messageApi.directBefore(selfId, id, before)
-    : await messageApi.directInitial(selfId, id);
+    ? await messageApi.directBefore(id, before)
+    : await messageApi.directInitial(id);
   return {
     items: history.map((m) => fromDirectMessage(m, selfId)).reverse(),
     cursor: history[history.length - 1]?.time ?? null,

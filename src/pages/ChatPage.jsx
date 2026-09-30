@@ -28,7 +28,7 @@ import "./ChatPage.scss";
 export default function ChatPage() {
   const location = useLocation();
   const user = location.state?.user ?? loadUser();
-  if (!user?.user_id) return <Navigate to="/" replace />;
+  if (!user?.user_id || !user.token) return <Navigate to="/" replace />;
   return <ChatWorkspace user={user} />;
 }
 
@@ -51,7 +51,7 @@ function ChatWorkspace({ user }) {
   const { toast, showToast, dismissToast } = useToast();
 
   // ── Realtime ──
-  const socket = useSocket(selfId);
+  const socket = useSocket(user.token);
   const activeKey = active ? conversationKey(active.type, active.id) : null;
   const activeContactId = active?.type === "direct" ? active.id : null;
   const presence = usePresence(socket, activeContactId);
@@ -65,7 +65,7 @@ function ChatWorkspace({ user }) {
 
   useEffect(() => {
     let cancelled = false;
-    Promise.all([contactApi.list(selfId), groupApi.list(selfId), userApi.getName(selfId)])
+    Promise.all([contactApi.list(), groupApi.list(), userApi.getName()])
       .then(([contactsRes, groupsRes, nameRes]) => {
         if (cancelled) return;
         setContacts(contactsRes.contacts ?? []);
@@ -167,10 +167,8 @@ function ChatWorkspace({ user }) {
           if (!socket) throw new Error("Not connected");
           socket.emit("send-group-message", {
             clickedGroupid: active.id,
-            senderid: selfId,
             sendmessage: body,
             time,
-            sendername: displayName,
             fileUrl,
             fileType,
             filename: fileName,
@@ -178,7 +176,6 @@ function ChatWorkspace({ user }) {
           });
         } else {
           await messageApi.sendDirect({
-            senderid: selfId,
             reciverid: active.id,
             sendmessage: body,
             time,
@@ -278,7 +275,6 @@ function ChatWorkspace({ user }) {
             tab={accountTab}
             onTabChange={setAccountTab}
             onClose={closeAccount}
-            selfId={selfId}
             email={user.email}
             displayName={displayName}
             contacts={contacts}

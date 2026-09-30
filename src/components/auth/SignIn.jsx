@@ -34,7 +34,7 @@ export default function SignIn() {
         setError(data.message || "Sign in failed.");
         return;
       }
-      const user = { user_id: data.userid, name: data.name, email: data.email };
+      const user = { user_id: data.userid, name: data.name, email: data.email, token: data.token };
       saveUser(user);
       navigate("/chat", { replace: true, state: { user } });
     } catch (err) {

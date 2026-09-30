@@ -16,7 +16,6 @@ export default function AccountDrawer({
   tab,
   onTabChange,
   onClose,
-  selfId,
   email,
   displayName,
   contacts,
@@ -43,7 +42,6 @@ export default function AccountDrawer({
 
       {tab === "profile" && (
         <ProfileSection
-          selfId={selfId}
           email={email}
           displayName={displayName}
           onRenamed={onRenamed}
@@ -51,14 +49,13 @@ export default function AccountDrawer({
       )}
       {tab === "add-contact" && (
         <AddContactSection
-          selfId={selfId}
           selfEmail={email}
           contacts={contacts}
           onAdded={onContactAdded}
         />
       )}
       {tab === "new-group" && (
-        <NewGroupSection selfId={selfId} contacts={contacts} onCreated={onGroupCreated} />
+        <NewGroupSection contacts={contacts} onCreated={onGroupCreated} />
       )}
     </Drawer>
   );

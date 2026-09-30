@@ -5,7 +5,7 @@ import Icon from "../ui/Icon.jsx";
 import Spinner from "../ui/Spinner.jsx";
 import MemberPicker from "./MemberPicker.jsx";
 
-export default function NewGroupSection({ selfId, contacts, onCreated }) {
+export default function NewGroupSection({ contacts, onCreated }) {
   const [name, setName] = useState("");
   const [selected, setSelected] = useState(() => new Set());
   const [submitting, setSubmitting] = useState(false);
@@ -35,8 +35,8 @@ export default function NewGroupSection({ selfId, contacts, onCreated }) {
     setSubmitting(true);
     setError("");
     try {
-      const { groupid } = await groupApi.create(groupName, selfId, microNow());
-      await groupApi.addMembers(groupid, [selfId, ...selected], microNow());
+      const { groupid } = await groupApi.create(groupName, microNow());
+      await groupApi.addMembers(groupid, [...selected], microNow());
       onCreated({ groupid: String(groupid), name: groupName });
     } catch (err) {
       setError(getErrorMessage(err, "Could not create the group."));

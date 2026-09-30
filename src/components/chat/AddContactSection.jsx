@@ -3,7 +3,7 @@ import { contactApi, getErrorMessage, userApi } from "../../api/index.js";
 import Icon from "../ui/Icon.jsx";
 import Spinner from "../ui/Spinner.jsx";
 
-export default function AddContactSection({ selfId, selfEmail, contacts, onAdded }) {
+export default function AddContactSection({ selfEmail, contacts, onAdded }) {
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState(null); // { tone: "error" | "success", text }
@@ -32,7 +32,7 @@ export default function AddContactSection({ selfId, selfEmail, contacts, onAdded
         return;
       }
 
-      await contactApi.add(selfId, friendId, friendName);
+      await contactApi.add(friendId, friendName);
       onAdded({ friend_id: friendId, friend_name: friendName });
       setStatus({ tone: "success", text: `${friendName} was added to your contacts.` });
       setEmail("");

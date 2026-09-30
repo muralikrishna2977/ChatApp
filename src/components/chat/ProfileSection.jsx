@@ -4,7 +4,7 @@ import Avatar from "../ui/Avatar.jsx";
 import Icon from "../ui/Icon.jsx";
 import Spinner from "../ui/Spinner.jsx";
 
-export default function ProfileSection({ selfId, email, displayName, onRenamed }) {
+export default function ProfileSection({ email, displayName, onRenamed }) {
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(displayName);
   const [saving, setSaving] = useState(false);
@@ -29,7 +29,7 @@ export default function ProfileSection({ selfId, email, displayName, onRenamed }
     }
     setSaving(true);
     try {
-      await userApi.rename(selfId, name);
+      await userApi.rename(name);
       onRenamed(name);
       setEditing(false);
     } catch (err) {
