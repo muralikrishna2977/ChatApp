@@ -1,0 +1,50 @@
+.app-shell {
+  display: flex;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.chat-pane {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  background: var(--color-surface);
+}
+
+@media (max-width: 1024px) {
+  .app-shell {
+    --sidebar-width: 300px;
+  }
+}
+
+// Mobile: show either the conversation list or the open chat, never both.
+@media (max-width: 720px) {
+  .app-shell {
+    --rail-width: 60px;
+
+    .sidebar {
+      flex: 1;
+      width: auto;
+      border-right: none;
+    }
+
+    .chat-pane {
+      display: none;
+    }
+
+    &--chat-open {
+      .rail,
+      .sidebar {
+        display: none;
+      }
+
+      .chat-pane {
+        display: flex;
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+.empty-chat {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 32px;
+  text-align: center;
+  background-color: var(--color-chat-bg);
+  background-image: var(--chat-wallpaper);
+  background-size: 260px 260px;
+
+  &__logo {
+    width: 88px;
+    height: 88px;
+    margin-bottom: 8px;
+    padding: 14px;
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: var(--shadow-md);
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  &__text {
+    max-width: 380px;
+    color: var(--color-text-secondary);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 12px;
+  }
+}

@@ -1,0 +1,270 @@
+.msg-bubble {
+  .msg-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    gap: 6px;
+
+    &--sent {
+      flex-direction: row-reverse;
+      justify-content: flex-start;
+    }
+    &--received {
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+
+    // Action buttons: hidden by default, fade in on row hover
+    .msg-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      flex-shrink: 0;
+
+      &--left  { align-items: flex-end; }
+      &--right { align-items: flex-start; }
+
+      .msg-action-btn {
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid #cde7f7;
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+        line-height: 1;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        color: #4a76a8;
+
+        &:hover { background: #d6f0fd; }
+      }
+    }
+
+    &:hover .msg-actions {
+      opacity: 1;
+    }
+  }
+
+  // ── Files container ──
+  .msg-files {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 60%;
+  }
+
+  // ── Reply quote bubble ──
+  .msg-reply-quote {
+    width: 100%;
+    padding: 5px 10px;
+    border-left: 3px solid #2e86c1;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    .msg-reply-sender {
+      font-size: 12px;
+      font-weight: 700;
+      color: #2e86c1;
+    }
+    .msg-reply-text {
+      font-size: 12px;
+      color: #444;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 240px;
+    }
+  }
+
+  // ── Group received sender header ──
+  .msg-group-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 6px 10px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+
+    .msg-sender-name {
+      margin: 0;
+      opacity: 0.8;
+      font-size: 13px;
+      font-weight: 600;
+    }
+  }
+
+  // ── Image ──
+  .msg-image-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  // ── Video ──
+  .msg-video-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  // ── Shared caption bar (image / video) ──
+  .msg-caption {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+
+    .msg-caption-text {
+      margin: 0;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      white-space: normal;
+      max-width: 100%;
+      word-break: break-word;
+    }
+  }
+
+  // ── PDF ──
+  .msg-file-wrap {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+
+    .msg-pdf-inner {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .msg-pdf-name {
+        width: 100%;
+        background-color: #a4defb;
+        padding: 10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        color: rgb(66, 66, 66);
+        font-weight: bold;
+        font-size: 14px;
+        border: solid 1px white;
+        border-bottom: 0;
+
+        img { margin-right: 10px; }
+      }
+
+      .msg-pdf-open {
+        border: solid 1px white;
+        border-bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: #a4defb;
+
+        a {
+          padding: 8px 20px;
+          background-color: white;
+          color: #333;
+          border: 1px solid #b3e0f2;
+          border-radius: 5px;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  // ── Plain text bubble ──
+  .msg-text-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+
+    .msg-text {
+      margin: 0;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      white-space: normal;
+      max-width: 100%;
+      word-break: break-word;
+    }
+  }
+
+  // ── Shared timestamp ──
+  .msg-time-small {
+    margin: 0;
+    font-size: 12px;
+    opacity: 0.7;
+  }
+}
+
+// ── Full-screen image preview modal ──
+.image_preview_modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+
+  .modal_content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+
+    .modal_close {
+      position: absolute;
+      top: -44px;
+      right: 0;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px 8px;
+      &:hover { opacity: 0.7; }
+    }
+
+    .modal_image {
+      max-width: 90vw;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .modal_download {
+      padding: 10px 28px;
+      background: #55c2f8;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      &:hover { background: #3badd8; }
+    }
+  }
+}

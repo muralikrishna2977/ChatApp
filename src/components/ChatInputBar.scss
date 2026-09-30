@@ -1,0 +1,47 @@
+// Reply preview banner — sits inside .typemessage, above the textarea row
+.reply-preview-bar {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #c9e8f8;
+  border-top: 2px solid #55c2f8;
+  padding: 6px 14px;
+  z-index: 10;
+
+  .reply-preview-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+
+    .reply-preview-sender {
+      font-size: 12px;
+      font-weight: 700;
+      color: #2e86c1;
+    }
+
+    .reply-preview-text {
+      font-size: 12px;
+      color: #444;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 400px;
+    }
+  }
+
+  .reply-preview-cancel {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    flex-shrink: 0;
+    padding: 0 4px;
+    &:hover { color: #333; }
+  }
+}

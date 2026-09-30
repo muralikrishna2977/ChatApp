@@ -1,0 +1,51 @@
+.toast-region {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 60;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 10px 10px 14px;
+  border-radius: var(--radius-md);
+  background: #111827;
+  color: #f9fafb;
+  box-shadow: var(--shadow-lg);
+  font-size: 13px;
+  pointer-events: auto;
+
+  &--error svg:first-child {
+    color: #f87171;
+  }
+
+  &--success svg:first-child {
+    color: #4ade80;
+  }
+
+  &__message {
+    flex: 1;
+  }
+
+  &__close {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: #9ca3af;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+  }
+}
